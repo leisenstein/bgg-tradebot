@@ -9,8 +9,27 @@ Services.BaseBGGSearchURL = 'https://boardgamegeek.com/findgamers.php?action=fin
 Services.getTradeList = function(zipcode, dist, callback) {
     var baseUrl = Services.BaseBGGSearchURL;
     var url = baseUrl.replace("[ZIPCODE]", zipcode).replace("[MAXDISTANCE]", dist);
-    console.log('Final URL: ' + url);
-    callback('json results');
+    var result = 'json results';
+
+    request(url, function(error, res, html) {
+        if(error) {
+            console.log('ERROR in getTradeList');
+        } else {
+            $ = cheerio.load(html);
+            result = html;
+            console.log('Final URL: ' + url);
+            
+            var a = $('div')[0];
+
+
+
+            callback(a);
+        }
+    });
+
+
+
+   
 }
 
 module.exports = Services;

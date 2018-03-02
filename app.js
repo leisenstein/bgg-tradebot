@@ -30,9 +30,10 @@ app.get('/tradebot/:zipcode/:range', function(req, res) {
 
 
     services.getTradeList(zip, dist, function(result) {
-        console.log('JSON: ' + result);
+        console.log('RESULT: ' + result);
     });
     res.send('Search in zipcode: ' + zip + ' within ' + dist + ' miles!');
+    
 });
 
 
