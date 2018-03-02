@@ -19,7 +19,7 @@ Services.getTradeList = function(zipcode, dist, callback) {
             result = html;
             console.log('Final URL: ' + url);
             
-            var a = $('div')[0];
+            var a = $('div.username a')[0].getAttribute('href');
 
 
 
